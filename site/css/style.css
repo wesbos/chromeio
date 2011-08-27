@@ -1,0 +1,11 @@
+/* These are fixes to make the markup look nice, nothing to do with the themes*/
+#elements-content {
+	width: 100%;}
+.webkit-html-js-node, .webkit-html-css-node {
+	white-space: pre-wrap;
+	left: -95px;
+	position: relative;
+}
+
+.elHov {
+	border: 1px solid red;}

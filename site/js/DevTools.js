@@ -9,8 +9,28 @@ $(function() {
 		$('.selected').removeClass('selected');
 		$(this).addClass('selected');
 	});
+
 	
-	$('*').click(function() {
-		console.log(this.className );
+	// finding the class name
+	$("[class^=webkit]").click(function() {
+		var classes = this.className.match(/webkit-[\w-]*/);		
+		console.log(classes);
 	});
+	
+	
+	// mimic inspector element finder
+	$('li *').hover(function() {
+		//$('.elhov').removeClass('elHov');
+		//$(this).addClass('elHov');
+		$(this).css('outline', '1px solid red');
+	}, function() {
+		//$('.elhov').removeClass('elHov');
+		//$(this).removeClass('elHov');
+		$(this).css('outline', 'none')
+	});
+	
+	
 });
+
+
+
