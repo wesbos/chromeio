@@ -1,36 +1,52 @@
 $(function() {
+
+	var chromeio = window.chromeio = {};
+
+	// Events
+	
+	// mimic inspector hover
 	$('li').hover(function() {
 		$(this).addClass('hovered');
 	}, function() {
 		$(this).removeClass('hovered');
 	});
 	
+	// mimic webkit current selected line
 	$('li').click(function() {
 		$('.selected').removeClass('selected');
 		$(this).addClass('selected');
 	});
-
-	
-	// finding the class name
-	$("[class^=webkit]").click(function() {
-		var classes = this.className.match(/webkit-[\w-]*/);		
-		console.log(classes);
-	});
-	
 	
 	// mimic inspector element finder
-	$('li *').hover(function() {
-		//$('.elhov').removeClass('elHov');
-		//$(this).addClass('elHov');
-		$(this).css('outline', '1px solid red');
-	}, function() {
-		//$('.elhov').removeClass('elHov');
-		//$(this).removeClass('elHov');
-		$(this).css('outline', 'none')
+	$("[class^=webkit]").hover(function(e) {
+		$('.elHov').removeClass('elHov');
+		$(this).addClass('elHov');
+		e.stopPropagation();
+	}, function(e) {
+		$('.elHov').removeClass('elHov');
+		$(this).removeClass('elHov');
+		e.stopPropagation();
+	});
+	
+	// finding the class name
+	$("[class^=webkit]").click(function(e) {
+		e.stopPropagation();
+		var class = this.className.match(/webkit-[\w-]*/);		
+		console.log(class + '');
+		if (!chromeio[class]) {
+			console.log('nothing found for '+ class);
+			chromeio[class] = {};
+		} 
+		else {
+			console.log('found it! we will update your styles');
+		}
 	});
 	
 	
 });
+
+
+
 
 
 
