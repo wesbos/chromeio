@@ -1,0 +1,295 @@
+
+/**********************************************/
+/*
+/* Chromebalt - Colbalt for chrome
+/*
+/*
+/**********************************************/
+
+/**********************************************/
+/* Layout
+/**********************************************/
+
+
+#elements-content.source-code {
+	background: #002f4f !important;
+	font-size: 12px !important;
+}
+
+#elements-content .highlight { 
+	
+}
+
+
+
+/* Hover */
+#elements-content .hovered {
+	background: #1c3e56;
+	border-radius: 5px;
+	}
+	
+#elements-content li {
+	border: 1px solid #002f4f;
+	}
+	
+#elements-content .selection {
+
+}
+
+#elements-content .selected {
+	border-bottom: 1px solid #3f627a;
+	border-top: 1px solid #3f627a;
+	background: #1f4662;
+}
+
+#elements-content .parent {
+
+}
+
+/*.outline-disclosure ol:focus li.parent.expanded.selected::before*/
+#elements-content .outline-disclosure li.parent::before,
+#elements-content .outline-disclosure ol:focus li.parent.expanded.selected::before {
+	background: none !important;
+	content: '' !important;
+}
+
+#elements-content .parent.selected {
+	
+}
+
+#elements-content .parent.selected {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+
+#elements-content .parent.expanded {
+	
+}
+
+.outline-disclosure li.parent::before {
+	content: url(Images/treeRightTriangleWhite.png);
+}
+
+/**********************************************/
+/* HTML
+/**********************************************/
+#elements-content .webkit-html-comment {
+	color: #0082ff !important;
+	font-style: italic !important;
+
+}
+
+#elements-content .webkit-html-doctype {
+
+}
+
+
+#elements-content .webkit-html-tag {
+	color: #fff !important;
+}
+
+#elements-content .webkit-html-tag-name {
+	color: #9effff !important;
+		
+}
+
+#elements-content .webkit-html-attribute {
+	color: #9effff !important;
+}
+
+#elements-content .webkit-html-attribute-name {
+	color: #9effff !important;
+}
+
+#elements-content .webkit-html-attribute-value {
+	color: #35d300 !important;
+}
+
+#elements-content .webkit-html-external-link {
+
+} 
+
+#elements-content .webkit-html-resource-link {
+
+}
+
+#elements-content .webkit-html-text-tag {
+
+}
+
+#elements-content .webkit-html-text-node {
+	color: #c2c3c3 !important;
+}
+
+#elements-content .webkit-html-css-node {
+	color: #c2c3c3 !important;
+}
+
+#elements-content .webkit-html-js-node {
+	color: #c2c3c3 !important;
+}
+
+
+/**********************************************/
+/* CSS
+/**********************************************/
+
+#elements-content .webkit-css-comment {
+
+}
+
+#elements-content .webkit-css-url {
+
+}
+
+#elements-content .webkit-css-color {
+
+}
+
+#elements-content .webkit-css-selector {
+
+} 
+
+#elements-content .webkit-css-property {
+
+}
+
+#elements-content .webkit-css-number {
+
+}
+
+#elements-content .webkit-css-keyword {
+
+}
+
+#elements-content .webkit-css-string {
+
+}
+
+#elements-content .webkit-css-important {
+
+}
+
+
+/**********************************************/
+/* JavaScript
+/**********************************************/
+#elements-content .webkit-javascript-comment {
+	color: #0082ff;
+	font-style: italic !important;
+}
+
+#elements-content .webkit-javascript-keyword {
+	color: #d97640 !important;
+}
+
+#elements-content .webkit-javascript-ident {
+	color: #d97640 !important;
+}
+
+#elements-content .webkit-javascript-string {
+
+}
+
+#elements-content .webkit-javascript-number {
+
+}
+
+#elements-content .webkit-javascript-regexp {
+
+}
+
+/**********************************************/
+/* Scrollbars
+/**********************************************/
+
+#elements-content::-webkit-scrollbar-thumb
+ {
+    background: #fff !important;
+    border-radius: 10px;
+}
+
+#elements-content::-webkit-scrollbar
+ {
+    color: #fff;
+    width: 5px;
+    background: none !important;
+}
+
+
+/**********************************************/
+/* Toolbar
+/**********************************************/
+
+.toolbar-small {
+	background: white !important;
+}
+
+.toolbar-small .toolbar-icon {
+	background: url(http://cl.ly/9eBv/toolbarIconsSmall.png) !important;}
+
+
+.toolbar-item.elements .toolbar-icon {
+    background-position-x:0 !important;
+}
+
+.toolbar-item.resources .toolbar-icon {
+    background-position-x:-32px !important;
+}
+
+.toolbar-small .toolbar-item.resources .toolbar-icon {
+    background-position-x:-24px !important;
+}
+
+.toolbar-item.network .toolbar-icon {
+    background-position-x:-64px !important;
+}
+
+.toolbar-small .toolbar-item.network .toolbar-icon {
+    background-position-x:-48px !important;
+}
+
+.toolbar-item.scripts .toolbar-icon {
+    background-position-x:-96px !important;
+}
+
+.toolbar-small .toolbar-item.scripts .toolbar-icon {
+    background-position-x:-72px !important;
+}
+
+.toolbar-item.timeline .toolbar-icon {
+    background-position-x:-128px !important;
+}
+
+.toolbar-small .toolbar-item.timeline .toolbar-icon {
+    background-position-x:-96px !important;
+}
+
+.toolbar-item.profiles .toolbar-icon {
+    background-position-x:-160px !important;
+}
+
+.toolbar-small .toolbar-item.profiles .toolbar-icon {
+    background-position-x:-120px !important;
+}
+
+.toolbar-item.audits .toolbar-icon {
+    background-position-x:-192px !important;
+}
+
+.toolbar-small .toolbar-item.audits .toolbar-icon {
+    background-position-x:-144px !important;
+}
+
+.toolbar-item.console .toolbar-icon {
+    background-position-x:-224px !important;
+}
+
+.toolbar-small .toolbar-item.console .toolbar-icon {
+    background-position-x:-168px !important;
+}
+
+
+.toolbar-item.toggleable.toggled-on {
+	background: #ccc !important;
+	}

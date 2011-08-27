@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>Chromeio Demo Page</title>
+	
+	<!-- This ia am html comment --> 
+	
+	<style type="text/css">
+		#wrapper {
+			position: relative;
+			width: 500px;
+			background: #ccc !important;
+			border: 1px solid #BADA55; /* inline style comment */ 
+		}
+		.someClass {
+			font-weight: 600;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="wrapper" class="someClass">
+		<span id="cspan" class="chrome4lyfe">A Span</span>
+		<a href="#" title="A Link Example">A Link Example</a>
+		<img src="http://www.google.com/intl/en_com/images/srpr/logo3w.png" alt="Test Alt" />
+		<ul class="list">
+			<li id="listItem1" class="listItem">One</li>
+			<li id="listItem2" class="listItem">Two</li>
+			<li id="listItem3" class="listItem">Three</li>
+			<li id="listItem4" class="listItem">Four</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		var myObj = {
+				best : "chrome",
+				worst : "ie"
+			},
+			myNum = 1337,
+			myStr = "Yo Dawg, I heard you liked chrome", // Inline Javascript 
+			myBool = true,
+			myArr = ["one","two","three"],
+			myDate = new Date,
+			myRegEx = /../,
+			myLink = document.getElementsByTagName('a')[0];
+						
+		/* Block JS Comment */
+		myObj.cache = document.getElementById('wrapper');
+		
+		myObj.func = function(el,oh,elle) {
+			console.log(oh);
+		};
+		
+		myLink.addEventListener('click', function() {
+			alert('thanks for the click');
+		});
+
+	</script>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+</body>
+</html>
+
