@@ -1,0 +1,177 @@
+
+/**********************************************/
+/*
+/* Darker Skin by Darcy Clarke - 2011
+/*
+/* Based on Joe Bergantine's Specials Board:
+/* http://joebergantine.com/werkstatt/seestyle
+/*
+/**********************************************/
+
+/**********************************************/
+/* Layout
+/**********************************************/
+#elements-content.source-code {
+	background: #242537 !important;
+	font-size: 12px !important;
+}
+
+#elements-content .highlight { 
+	color: blue;
+}
+
+#elements-content .selection {
+
+}
+
+#elements-content .selection.selected {
+
+}
+
+#elements-content .parent {
+
+}
+
+/*.outline-disclosure ol:focus li.parent.expanded.selected::before*/
+#elements-content .outline-disclosure li.parent::before,
+#elements-content .outline-disclosure ol:focus li.parent.expanded.selected::before {
+	background: none !important;
+	content: '' !important;
+}
+
+#elements-content .parent.selected {
+	
+}
+
+#elements-content .parent.selected {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+
+#elements-content .parent.expanded {
+	
+}
+
+/**********************************************/
+/* HTML
+/**********************************************/
+#elements-content .webkit-html-comment {
+	color: #8c8c8c !important;
+}
+
+#elements-content .webkit-html-doctype {
+
+}
+
+#elements-content .webkit-html-tag {
+	color: #ffc97c !important;
+}
+
+#elements-content .webkit-html-tag-name {
+		
+}
+
+#elements-content .webkit-html-attribute {
+
+}
+
+#elements-content .webkit-html-attribute-name {
+	color: #d97640 !important;
+}
+
+#elements-content .webkit-html-attribute-value {
+	color: #abca7e !important;
+}
+
+#elements-content .webkit-html-external-link {
+
+} 
+
+#elements-content .webkit-html-resource-link {
+
+}
+
+#elements-content .webkit-html-text-tag {
+
+}
+
+#elements-content .webkit-html-text-node {
+	color: #c2c3c3 !important;
+}
+
+#elements-content .webkit-html-css-node {
+	color: #c2c3c3 !important;
+}
+
+#elements-content .webkit-html-js-node {
+	color: #c2c3c3 !important;
+}
+
+
+/**********************************************/
+/* CSS
+/**********************************************/
+
+#elements-content .webkit-css-comment {
+
+}
+
+#elements-content .webkit-css-url {
+
+}
+
+#elements-content .webkit-css-color {
+
+}
+
+#elements-content .webkit-css-selector {
+
+} 
+
+#elements-content .webkit-css-property {
+
+}
+
+#elements-content .webkit-css-number {
+
+}
+
+#elements-content .webkit-css-keyword {
+
+}
+
+#elements-content .webkit-css-string {
+
+}
+
+#elements-content .webkit-css-important {
+
+}
+
+
+/**********************************************/
+/* JavaScript
+/**********************************************/
+#elements-content .webkit-javascript-comment {
+
+}
+
+#elements-content .webkit-javascript-keyword {
+	color: #d97640 !important;
+}
+
+#elements-content .webkit-javascript-ident {
+	color: #d97640 !important;
+}
+
+#elements-content .webkit-javascript-string {
+
+}
+
+#elements-content .webkit-javascript-number {
+
+}
+
+#elements-content .webkit-javascript-regexp {
+
+}
