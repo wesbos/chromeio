@@ -37,13 +37,14 @@ $(function() {
 		e.stopPropagation();
 		
 		// Match the classes
-		var class = this.className.match(/webkit-[\w-]*/);		
-		console.log(class + '');
+	var classy = "watt";
+		var classy = this.className.match(/webkit-[\w-]*/);		
+		console.log(classy + '');
 		
 		// Update the style object
-		if (!chromeio.styles[class]) {
-			console.log('nothing found for '+ class);
-			chromeio.styles[class] = {};
+		if (!chromeio.styles[classy]) {
+			console.log('nothing found for '+ classy);
+			chromeio.styles[classy] = {};
 		} 
 		else {
 			console.log('found it! we will update your styles');
