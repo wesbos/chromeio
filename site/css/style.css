@@ -9,3 +9,14 @@
 
 .elHov {
 	outline: 1px solid red;}
+	
+	
+.editor {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	width: 250px;
+	height: 300px;
+	z-index: 99;
+	background: #fff;
+	border: 2px solid red;}
