@@ -3,25 +3,34 @@ $(function() {
 	var chromeio = window.chromeio = {};
 		chromeio.styles = {},
 		chromeio.edit = {},
-		chromeio.activeStyle;
+		chromeio.activeSelector,
+		chromeio.activeProperty;
 
-	// Events
 	
-	// mimic inspector hover
+	/*
+		 mimic inspector hover
+	*/
+	
 	$('li').hover(function() {
 		$(this).addClass('hovered');
 	}, function() {
 		$(this).removeClass('hovered');
 	});
 	
-	// mimic webkit current selected line
+	
+	/*
+		 mimic webkit current selected line
+	*/ 
 	$('li').click(function() {
 		$('.selected').removeClass('selected');
 		$(this).addClass('selected');
 	});
 	
-	// mimic inspector element finder
-	$("[class^=webkit]").hover(function(e) {
+	
+	/*
+		mimic inspector element finder
+	*/
+	$("[class^=webkit], #elements-content2").hover(function(e) {
 		$('.elHov').removeClass('elHov');
 		$(this).addClass('elHov');
 		e.stopPropagation();
@@ -31,7 +40,9 @@ $(function() {
 		e.stopPropagation();
 	});
 	
-	// finding the class name
+	/*
+		finding the class name
+	*/ 
 	$("[class^=webkit]").click(function(e) {
 		
 		// stop the event from bubbling up into parent spans
@@ -52,30 +63,44 @@ $(function() {
 		else {
 			console.log('found it! we will update your styles',chromeio.styles[classy]);
 		}
-		
-		chromeio.activeStyle = chromeio.styles[classy].name; 
-		chromeio.viewStyles(chromeio.styles[classy]);
-		
-		
 
+		chromeio.viewStyles(chromeio.styles[classy]);
 	});
 	
+	
+	/*
+		View & Edit Styles Pane 
+	*/
+	
 	chromeio.viewStyles = function(obj) {
-		html = "<h3>"+ obj.name +"</h3>";
+		html = "<div class='element' rel='"+obj.name+"' ><h3>"+ obj.name +"</h3>";
 		for (key in obj) {
 			if (obj.hasOwnProperty(key) && key !== "name") {
-				//console.log(key, obj[key])
-				html += "<hr />";
-				html += key + "- <input type='text' data-cssRule='"+ obj.name +"' class='colorwheel' value='" + obj[key] + "' />";
+				html += key + "- <input type='text' data-cssselector='"+ obj.name +"' data-cssproperty='"+key+"' class='colorwheel' value='" + obj[key] + "' /></div>";
 			}
 		}
-		$('.editorInner').html(html);
-		startColorPicker(); 
+		
+		$('.editorInner').append(html);
+		chromeio.startColorPicker();
 	}
 	
+	/* 
+		Element Input Boxes 
+	*/
 	
-	// colorpicker
-	function startColorPicker() {
+	$('.element input').live('focus',function() {
+		var that = $(this);
+		chromeio.activeSelector = that.data('cssselector');
+		chromeio.activeProperty = that.data('cssproperty');
+		console.log('set the active states');
+	});
+	
+	
+	/* 
+		Colour Picker - Yeah - thats ColoUr 
+	*/ 
+	
+	chromeio.startColorPicker = function() {
 		$('.colorwheel').ColorPicker({
 			onSubmit: function(hsb, hex, rgb, el) {
 				$(el).val(hex);
@@ -85,11 +110,28 @@ $(function() {
 				$(this).ColorPickerSetColor(this.value);
 			},
 			onChange: function (hsb, hex, rgb) {
-				$('#elements-content2 .'+chromeio.activeStyle).css('color', '#' + hex);
+				$('.'+chromeio.activeSelector).css(chromeio.activeProperty, '#' + hex);
 			}
 		})
 		.bind('keyup', function(){
 			$(this).ColorPickerSetColor(this.value);
 		});
-	}	
+	}
+	
+	/* 
+		Generate CSS! 
+	*/
+	
+	$('a#generate').click(function() {
+		var data = JSON.stringify(chromeio.styles);
+		$.post("generate.php", data,function(d) {
+			console.log(d);
+		})
+	});
+	
+	
+	/* Init */
+	chromeio.startColorPicker();
+	
+		
 });

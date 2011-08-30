@@ -1,6 +1,9 @@
 /* These are fixes to make the markup look nice, nothing to do with the themes*/
-#elements-content {
-	width: 100%;}
+#elements-content2 {
+	width: 100%;
+	margin: 0;
+	padding: 0;}
+	
 .webkit-html-js-node, .webkit-html-css-node {
 	white-space: pre-wrap;
 	left: -95px;
@@ -13,10 +16,32 @@
 	
 .editor {
 	position: fixed;
-	top: 15px;
-	right: 15px;
 	width: 250px;
-	height: 300px;
+	height: 100%;
+	right: 0;
 	z-index: 99;
 	background: #fff;
-	border: 2px solid red;}
+	border-left: 1px solid #BDBDBD;
+	box-shadow: 0 0 10px #ccc;
+	}
+	
+	
+	.editor h3 {
+		background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)), color-stop(0.05, rgb(243, 243, 243)), color-stop(0.05, rgb(230, 230, 230)), to(rgb(209, 209, 209)));
+		height: 20px;
+		padding: 0 5px;
+		border-top: 1px solid #BDBDBD;
+		border-bottom: 1px solid #BDBDBD;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 18px;
+		color: #6E6E6E;
+		text-shadow: white 0 1px 0;
+		-webkit-background-origin: padding;
+		-webkit-background-clip: padding;
+		font-family: Lucida Grande, sans-serif;
+		margin: 0 0 10px 0;
+	}
+	
+	.element {
+		font-family: Courier; }
