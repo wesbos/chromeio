@@ -1,6 +1,8 @@
 /* These are fixes to make the markup look nice, nothing to do with the themes*/
 #elements-content2 {
 	width: 100%;
+	overflow-y: scroll;
+	height: 100%;
 	margin: 0;
 	padding: 0;}
 	
@@ -44,4 +46,6 @@
 	}
 	
 	.element {
-		font-family: Courier; }
+		font-family: Courier;
+		height:19px;
+		overflow: hidden;}
