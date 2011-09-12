@@ -92,7 +92,7 @@ $(function() {
 					html += "<li><label>" + key + "</label>: <input type='text' data-cssselector='"+ obj.name +"' data-cssproperty='"+key+"' class='colorwheel' style='background: "+chromeio.styles[obj.name][key]+";' value='" + obj[key] + "' /></li>";
 				}
 			}
-			html += "</ul></div>";
+			html += "</ul><a href='#' class='addStyle' data-cssselector='"+ obj.name +"'> + Add Attribute </a></div>";
 			// Append to DOM
 			$('.editorInner').append(html);
 			chromeio.utils.startColorPicker();
@@ -134,7 +134,7 @@ $(function() {
 
 	*/ 
 	$('.textBind').live('keyup', function() {
-		var val = $(this).val() + "px !important"; 
+		var val = $(this).val() + " !important"; 
 		console.log('key up on text bind', $(this).val());
 		$('.'+chromeio.activeSelector).css(chromeio.activeProperty, val);
 		chromeio.styles[chromeio.activeSelector][chromeio.activeProperty] = val;
@@ -264,6 +264,18 @@ $(function() {
 			}
 		}
 
+		/* 
+			Add Attribute
+		*/
+
+		chromeio.utils.addAttribute =  function(selector) {
+			var property = prompt('What CSS Property?');
+			var attrType = prompt("Wat Kind of Attribute? (colorpicker or textBind) ");
+			$('#'+selector+ ' ul').append('<li><label>'+property+'</label><input type="text" data-cssselector="'+selector+'" data-cssproperty="'+property+'" class="'+attrType+'" value="" /></li>');
+			//$('#'+selector+ ' ul').append('<li>wat</li>');	
+	}
+
+		$('.addStyle').live('click',function() { chromeio.utils.addAttribute( $(this).data('cssselector') ) });
 
 
 	
