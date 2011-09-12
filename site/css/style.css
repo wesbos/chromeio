@@ -78,12 +78,36 @@
 	left; 0;
 	width: 100%;
 	height: 100%;
+	z-index: 97;
+	display:none;
 }
+	.overlayInner:after {
+		width: 498px;
+		height: 698px;
+		border: 1px solid #BDBDBD;
+		display: block;
+		content: ""; 
+		top:0;
+		left: 0;
+		position: absolute;
+		border-radius: 4px;
+		z-index: 98;
+	}
+
+
 	.overlayInner {
 		width: 500px;
-		margin:0 auto;
+		height: 700px;
+		margin:20px;
 		background: #fff;
 		padding:20px;
+		border: 1px solid #fff;
+		box-shadow: 0 0 20px #BDBDBD;
+		margin-top: 20px;
+		border-radius: 4px;
+		position: relative;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)),  color-stop(0.05, rgb(230, 230, 230)), to(rgb(209, 209, 209)));
+		z-index: 100;b
 	}
 
 	.overlayInner textarea {
