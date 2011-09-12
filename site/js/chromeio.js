@@ -99,8 +99,8 @@ $(function() {
 		}
 		// open
 		var el = $("#"+obj.name); 
-		$('.element').not(el).animate({ height : 20});
-		$(el).animate({ height : 100 });
+		$('.element').not(el).css({ height : 20});
+		$(el).css({ height : "auto" });
 	}
 	
 	/* 
@@ -124,8 +124,8 @@ $(function() {
 
 	$('.element h3').live('click', function() {
 		var el = $(this).parent();
-		$('.element').not(el).animate({ height : 20});
-		$(el).animate({ height : 100 });
+		$('.element').not(el).css({ height : 20});
+		$(el).css({ height : "auto" });
 	});
 	
 
