@@ -46,6 +46,47 @@
 	}
 	
 	.element {
-		font-family: Courier;
+		font-family: monospace, Courier;
 		height:19px;
+		font-size: 11px;
+		
 		overflow: hidden;}
+
+	.element ul {
+		margin:0;
+		padding: 5px;
+	}
+		.element li {
+			list-style-type: none;
+
+		}
+
+		.element label {
+			color: #C80000;
+			margin-right:5px;
+		}
+
+	.element input {
+		padding: 3px;
+		border: 1px solid #ccc;
+		width: 100px;
+	}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left; 0;
+	width: 100%;
+	height: 100%;
+}
+	.overlayInner {
+		width: 500px;
+		margin:0 auto;
+		background: #fff;
+		padding:20px;
+	}
+
+	.overlayInner textarea {
+		width: 400px;
+		height: 400px;
+	}
