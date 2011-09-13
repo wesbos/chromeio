@@ -6,4 +6,4 @@ copy(document.getElementById('elements-content'));
 
 
 1. Select an element
-2. view in sidebar..
+2. view in sidebar. !.
