@@ -5,4 +5,5 @@ Unreleased. Get Excited!
 copy(document.getElementById('elements-content'));
 
 
-1. Select an element`
+1. Select an element
+2. view in sidebar..
