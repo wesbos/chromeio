@@ -18,7 +18,9 @@
 	
 .editor {
 	position: fixed;
-	width: 250px;
+	min-width: 250px;
+	width: 40%;
+	max-width: 650px;
 	height: 100%;
 	right: 0;
 	z-index: 99;
@@ -121,3 +123,35 @@
 		width: 400px;
 		height: 400px;
 	}
+
+.button {
+	display: inline-block;
+	padding: 4px 8px;
+	border: 2px solid green;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	border-radius: 8px; 
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	text-shadow: 1px 1px 1px #000; 
+	background: orange;
+	color: white;
+	text-decoration: none;
+	margin: 5px;
+	font-weight: bold;
+}
+
+#styleInput {
+	width: 96%;
+	margin: 5px auto;
+	padding: 2px;
+	height: 100px;
+	display: block;
+}
+
+#output {
+	width: 96%;
+	margin: 5px auto;
+	padding: 2px;
+	height: 100px;
+	display: block;
+}
