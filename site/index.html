@@ -1,42 +1,42 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Chrome.io - Skinning your Dev Tools Since 2011</title>
-	
-    <!-- stylez like a baller -->
-    <link rel="stylesheet" href="css/BaseDevTools.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colorpicker.css">
-    <link rel="stylesheet" href="../skins/dark.css">
-    <!-- /stylez -->
-	
+	<meta charset="utf-8">
+	<title>Chrome.io - Skinning your Dev Tools Since 2011</title>
+
+	<!-- stylez like a baller -->
+	<link rel="stylesheet" href="css/BaseDevTools.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/colorpicker.css">
+	<link rel="stylesheet" href="../skins/dark.css">
+	<!-- /stylez -->
+
 </head>
 <body class="attached platform-mac platform-mac-snowleopard port-undefined">
 
 	<!-- editor magic sauce -->
 	<div class="editor">
-		
+
 		<!-- header -->
 		<header>
-			
+
 			<h1><a href="#" class="logo">Chrome.io</a></h1>
-			
+
 			<p class="alignCenter">
 				<a href="#" id="generate" class="btn">Generate CSS</a>
 				<a href="#" id="loadStyle" class="btn">Load JSON Style</a>
 			</p>
-			
+
 			<p>
 				<input type="text" id="styleInput" value='{"webkit-css-selector":{"name":"webkit-css-selector","color":"#a846a8","backgroundColor":""},"source-code":{"name":"source-code", "backgroundColor":"#1d2c42"},"webkit-html-tag":{"name":"webkit-html-tag","color":"#a0b816","backgroundColor":""},"webkit-html-attribute-name":{"name":"webkit-html-attribute-name","color":"#ff0000","backgroundColor":""},"webkit-html-attribute-value":{"name":"webkit-html-attribute-value","color":"#ffffff","backgroundColor":"#000000"},"webkit-css-number":{"name":"webkit-css-number","color":"#ede1ed","backgroundColor":""},"webkit-javascript-number":{"name":"webkit-javascript-number","color":"#a6ff00","backgroundColor":"#000000"},"webkit-javascript-ident":{"name":"webkit-javascript-ident","color":"#ffffff","backgroundColor":""}}'/>
 			</p>
-	
+
 		</header>
 		<!-- /header -->
-			
+
 		<!-- editorInner - yes, we like to wrap stuff -->
 		<div class="editorInner">
-		
+
 			<!-- elements -->
 			<div class="element">
 				<h3>Base Body Styles</h3>
@@ -47,28 +47,28 @@
 				<a href='#' class='addStyle' data-cssselector="source-code" > + Add Attribute </a>
 			</div>
 			<!-- /elements -->
-			
+
 			<div class="clearBoth"></div>
-			
+
 		</div>
 		<!-- /editorInner -->
-	
-		
+
+
 		<!-- outputWrapper -->
 		<div class="outputWrapper">
 			<h3><a href="#" class="arrow">Show/Hide</a> Output</h3>
-			<textarea name="" id="output" class="hide" cols="30" rows="10"></textarea>
+			<textarea id="output" class="hide" cols="30" rows="10"></textarea>
 		</div>
 		<!-- outputWraper -->
 
 		<textarea id="output" cols="30" rows="10"></textarea>
-		
+
 		<!-- props -->
 		<footer>
 			<p>Chromeio is built by <a href="http://twitter.com/wesbos" target="_blank">Wes Bos</a>. Have a problem, idea or want to help? This project is hosted on <a href="https://github.com/wesbos/chromeio" target="_blank">Github</a>.</p>
 		</footer>
 		<!-- /props -->
-		
+
 	</div>
 	<!-- /editor -->
 
@@ -81,9 +81,9 @@
 	<script>window.jQuery || document.write('<script src="js/jquery-1.6.2.min.js"><\/script>')</script>
 	<script defer src="js/jquery-ui-1.8.16.custom.min"></script>
 	<script defer src="js/colorpicker.js"></script>
-    <script defer src="js/chromeio.js"></script>
+	<script defer src="js/chromeio.js"></script>
 	<!-- /scripts -->
-	
+
 	<!-- overlay hawtness -->
 	<div class="overlay">
 		<div class="overlayInner">
@@ -96,8 +96,8 @@
 		</div>
 	</div>
 	<!-- /overlay -->
-	
+
 	<!-- y u no look at page in browser? -->
-	
+
 </body>
 </html>
