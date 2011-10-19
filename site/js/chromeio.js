@@ -1,113 +1,137 @@
-$(function() {
 
-	/* 
-		Namespace Setup
-	*/
+/**************************************************/
+/*	Chromeio
+/**************************************************/
+jQuery(function($){
+	
+	/**************************************************/
+	/*	Defaults
+	/**************************************************/
 	var chromeio = window.chromeio = {};
 		chromeio.styles = {},
 		chromeio.edit = {},
 		chromeio.activeSelector,
 		chromeio.activeProperty,
 		chromeio.utils = {}; 
+		
+		chromeio.cache = {};
+		chromeio.cache.editor = $(".editorInner");
+		chromeio.cache.overlay = $(".overlay");
+		chromeio.cache.overlay_tabs = $(".overlay .tab");
+		
+	/**************************************************/
+	/* Utilities 
+	/**************************************************/
+	chromeio.utils.toggleOverlay = function(tab){
+		if(typeof(tab) != "undefined")
+			chromeio.cache.overlay_tabs.hide().find("."+tab+"Wrapper").show();
+		if(chromeio.cache.overlay.is(":visible")){
+			chromeio.cache.overlay.fadeOut(500);
+		} else {
+			chromeio.cache.overlay.fadeTo(500,1);
+		}
+	};
+	
+	/**************************************************/
+	/* Bind to Events
+	/**************************************************/
+	$(".overlayClose").bind("click", function(e){
+		e.preventDefault();
+		chromeio.utils.toggleOverlay();	
+	});
+	
+	$(".promptLoad").bind("click", function(e){
+		e.preventDefault();
+		chromeio.utils.toggleOverlay("load");
+	});
+	
+	$(".promptOutput").bind("click", function(e){
+		e.preventDefault();
+		chromeio.utils.toggleOverlay("output");
+	});
+	
 
-
-	/* Mimic a few of the inspector features */
-
-		/*
-			 mimic inspector hover
-		*/
-		
-		$('li').hover(function() {
-			$(this).addClass('hovered');
-		}, function() {
-			$(this).removeClass('hovered');
-		});
-		
-		
-		/*
-			 mimic webkit current selected line
-		
+	
+	/*
+		Mimic Inspector hover
+	*/
+	$('li').hover(function() {
+		$(this).addClass('hovered');
+	}, function() {
+		$(this).removeClass('hovered');
+	});
+	
+	
+	/*
+		Mimic webkit current selected line
+	*/
+	/*
 		$('li').click(function() {
 			$('.selected').removeClass('selected');
 			$(this).addClass('selected');
-		});
-
-		*/ 
-		
-		
-		/*
-			mimic inspector element finder
-		*/
-		$("[class^=webkit], #elements-content2").hover(function(e) {
-			$('.elHov').removeClass('elHov');
-			$(this).addClass('elHov');
-			e.stopPropagation();
-		}, function(e) {
-			$('.elHov').removeClass('elHov');
-			$(this).removeClass('elHov');
-			e.stopPropagation();
-		});
-
-		
+		});	
+	*/
+	
 	
 	/*
-		finding the class name
-	*/ 
-
-	$("[class^=webkit]").click(function(e) {
-		
-		// stop the event from bubbling up into parent spans
+		Mimic inspector element finder
+	*/
+	$("[class^=webkit], #elements-content2").hover(function(e) {
 		e.stopPropagation();
-		
-		// Match the classes
+		$('.elHov').removeClass('elHov');
+		$(this).addClass('elHov');
+	}, function(e) {
+		e.stopPropagation();
+		$('.elHov').removeClass('elHov');
+		$(this).removeClass('elHov');
+	});
+	
+	
+	/*
+		Finding the class name
+	*/ 
+	$("[class^=webkit]").click(function(e) {
+		e.stopPropagation();
 		var classy = this.className.match(/webkit-[\w-]*/) + '';		
-
-		// Update the style object
 		if (!chromeio.styles[classy]) {
-			console.log('nothing found for '+ classy);
-			console.log( $('.'+classy).first() );
-
+			// console.log('nothing found for '+ classy);
+			// console.log( $('.'+classy).first() );
 			chromeio.utils.extendNamespace(classy);
-		} 
-		else {
-			console.log('found it! we will update your styles',chromeio.styles[classy]);
+		} else {
+		 	// console.log('found it! we will update your styles', chromeio.styles[classy]);
 		}
 		chromeio.viewStyles(chromeio.styles[classy]);
 	});
 	
 	
-	/*
+	/* 
 		View & Edit Styles Pane 
 	*/
-	
 	chromeio.viewStyles = function(obj) {
-		// check if div is already created
-		if ( $('#'+obj.name)[0] ) {
-			console.log('already open');
-		}
-		else {
-			html = "<div class='element' id='"+obj.name+"'><h3>"+ obj.name +"</h3><ul>";
+		if(!$('#'+obj.name)[0]){
+			var html = "<div class='element' id='"+obj.name+"'><h3>"+ obj.name +"</h3><ul>";
 			for (key in obj) {
 				if (obj.hasOwnProperty(key) && key !== "name") {
-					html += "<li><label>" + key + "</label>: <input type='text' data-cssselector='"+ obj.name +"' data-cssproperty='"+key+"' class='colorwheel' style='background: "+chromeio.styles[obj.name][key]+";' value='" + obj[key] + "' /></li>";
+					html += "<li><label>" + key.substr(0, 1).toUpperCase() + key.substr(1, key.length) + "</label>: <input type='text' data-cssselector='"+ obj.name +"' data-cssproperty='"+key+"' class='colorwheel' style='background: "+chromeio.styles[obj.name][key]+";' value='" + obj[key] + "' /></li>";
 				}
 			}
-			html += "</ul><a href='#' class='addStyle' data-cssselector='"+ obj.name +"'> + Add Attribute </a></div>";
-			// Append to DOM
-			$('.editorInner').append(html);
+			html += "</ul><a href='#' class='addStyle btn' data-cssselector='"+ obj.name +"'>Add Attribute </a></div>";
+			chromeio.cache.editor.append(html);
 			chromeio.utils.startColorPicker();
 		}
+		
 		// open
+		
 		var el = $("#"+obj.name); 
-		$('.element').not(el).css({ height : 20});
-		$(el).css({ height : "auto" });
+		$('.element').not(el).removeClass("open");
+		$(el).addClass("open");
 	}
 	
 	/* 
 		Element Input Boxes 
 	*/
 	
-	$('.element input').live('focus',function() {
+	$(".element input").live('focus',function() {
 		var that = $(this),
 			cssselector =  that.data('cssselector'),
 			cssproperty =  that.data('cssproperty');
@@ -119,13 +143,17 @@ $(function() {
 		if (!chromeio.styles[cssselector]) {  chromeio.utils.extendNamespace(cssselector);  }; 
 		chromeio.activeSelector = that.data('cssselector');
 		chromeio.activeProperty = that.data('cssproperty');
-		console.log('set the active states');
+		log('set the active states');
 	});
 
-	$('.element h3').live('click', function() {
-		var el = $(this).parent();
-		$('.element').not(el).css({ height : 20});
-		$(el).css({ height : "auto" });
+	$(".element h3").live('click', function() {
+		var el = $(this).parents(".element");
+		if(!el.hasClass("open")){
+			$('.element').not(el).removeClass("open");
+			el.addClass("open");
+		} else {
+			el.removeClass("open");
+		}
 	});
 	
 
@@ -133,9 +161,9 @@ $(function() {
 		Text Inputs
 
 	*/ 
-	$('.textBind').live('keyup', function() {
+	$(".textBind").live('keyup', function() {
 		var val = $(this).val() + " !important"; 
-		console.log('key up on text bind', $(this).val());
+		log('key up on text bind', $(this).val());
 		$('.'+chromeio.activeSelector).css(chromeio.activeProperty, val);
 		chromeio.styles[chromeio.activeSelector][chromeio.activeProperty] = val;
 	});
@@ -145,9 +173,9 @@ $(function() {
 		Load External JSON Styles
 	*/
 
-	$('#loadStyle').click(function() {
-		var json = $('input#styleInput').val();
-		chromeio.utils.loadStyle(json);	
+	$("#loadStyle").bind("click", function(e) {
+		e.preventDefault();
+		chromeio.utils.loadStyle($('#styleInput').val());	
 	});
 
 
@@ -155,9 +183,9 @@ $(function() {
 		Generate CSS! 
 	*/
 	
-	$('a#generate').click(function() {
-		var html = chromeio.utils.generateCSS(); 
-		$('textarea#output').html(html); 
+	$("#generate").bind("click", function(e) {
+		e.preventDefault();
+		$("#output").html(chromeio.utils.generateCSS()); 
 	});
 
 
@@ -174,7 +202,7 @@ $(function() {
 		}
 
 		chromeio.utils.generateCSS = function() {
-			var html = "/* \n \t Generated by Chromeio! \n\t http://chrome.io \n\t Coppyright 2011 Wes Bos <wes@wesbos.com>  \n\t https://github.com/wesbos/chromeio \n\n\t You Can load this into the editor by copying and pasting the following json string: \n\n\t" + JSON.stringify(chromeio.styles) + " \n\n */ \n\n "; 
+			var html = "/* \n \t Generated by Chromeio! \n\t http://chrome.io \n\t Coppyright 2011 Wes Bos <wes@wesbos.com> & Darcy Clarke <darcy@darcyclarke.me>  \n\t https://github.com/wesbos/chromeio \n\n\t You Can load this into the editor by copying and pasting the following json string: \n\n\t" + JSON.stringify(chromeio.styles) + " \n\n */ \n\n "; 
 			for (var key in chromeio.styles) {
 				// open selector
 				switch(key) {
@@ -271,7 +299,7 @@ $(function() {
 		chromeio.utils.addAttribute =  function(selector) {
 			var property = prompt('What CSS Property?');
 			var attrType = prompt("Wat Kind of Attribute? (colorpicker or textBind) ");
-			$('#'+selector+ ' ul').append('<li><label>'+property+'</label><input type="text" data-cssselector="'+selector+'" data-cssproperty="'+property+'" class="'+attrType+'" value="" /></li>');
+			$('#'+selector+ ' ul').append('<li><label>'+property.substr(0, 1).toUpperCase()+property.substr(1,property.length)+'</label><input type="text" data-cssselector="'+selector+'" data-cssproperty="'+property+'" class="'+attrType+'" value="" /></li>');
 			//$('#'+selector+ ' ul').append('<li>wat</li>');	
 	}
 

@@ -1,5 +1,6 @@
+
 /*******************************************************/
-/* Darcy CSS
+/*	Reset
 /*******************************************************/		
 	
 	article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
@@ -62,6 +63,14 @@
 	table { border-collapse: collapse; border-spacing: 0; }
 	td { vertical-align: top; }
 	
+/*******************************************************/		
+/*	General Styles
+/*******************************************************/
+	
+	a:link, a:active, a:visited {
+		color: #1257f9;
+	}
+	
 	a.btn, a.btn:active {
 		color: #666;
 		background: ;
@@ -96,6 +105,10 @@
 		clear: both;
 	}
 	
+	.clearfix:before, .clearfix:after { content: ""; display: table; }
+	.clearfix:after { clear: both; }
+	.clearfix { zoom: 1; }
+	
 	.arrow {
 		background: transparent url(../images/arrow.png) no-repeat 0 0;
 		display: inline-block;
@@ -115,6 +128,10 @@
 		float: left;
 	}
 	
+/*******************************************************/		
+/*	Sidebar Container
+/*******************************************************/
+
 	.editor {
 		overflow-y: scroll !important;
 		width: 30%;
@@ -143,44 +160,85 @@
 	    background: #efefef;
 	    -webkit-border-radius: 10px;
 	}
-		
+
+/*******************************************************/		
+/*	Sidebar Header
+/*******************************************************/	
+
 	.editor header {
 		padding: 2.5%;
 	}
 	
 	.logo {
-		background: transparent url(../images/logo.png) no-repeat 5px 5px;
+		background: transparent url(../images/logo.png) no-repeat 0 0;
 		height: 1px;
 		width: 1px;
-		padding: 35px 0 0 155px;
+		padding: 45px 0 0 200px;
 		margin: 10px auto 20px;
 		overflow: hidden;
 		display: block;
 	}
 	
-	
-
+/*******************************************************/		
+/*	Sidebar Element
 /*******************************************************/
-/* Old CSS
-/*******************************************************/	
 	
-/* These are fixes to make the markup look nice, nothing to do with the themes*/
-#elements-content2 {
-	width: 70%;
-	overflow: auto;
-	height: 100%;
-	margin: 0;
-	padding: 0;}
+	.editor .element ul {
+		width: 100%;
+		margin: 0;
+		padding: 5px 15px 15px;
+		margin: 0 0 5px 0;
+		border-bottom: 1px solid #f2f2f2;
+	}
 	
-.webkit-html-js-node, .webkit-html-css-node {
-	white-space: pre-wrap;
-	left: -95px;
-	position: relative;
-}
-
-.elHov {
-	outline: 1px solid red;}	
-
+	.editor .element ul li {
+		color: #ccc;
+		margin: 0 0 2px 0;
+		float: left;
+		display: block;
+		clear: both;
+		width: 100%;
+	}
+	
+	.editor .element ul	li label {
+		width: 60%;
+		display: block;
+		float: left;
+		padding: 5px 0 0 0;
+	}
+	
+	.editor .element ul li input {
+		width: 34%;
+		display: inline-block;
+		position: relative;
+		float: right;
+	}
+	
+	.editor .element ul li:before  > .colorwheel {
+		content: '';
+		position: absolute;
+		z-index: 999;
+		background: red;
+		width: 16px;
+		height: 16px;
+		margin: 0 2px 0 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+	}
+	
+	.editor .element h3:before {
+		content: url(../images/disclosureTriangleSmallRightBlack.png);
+		float: left;
+		width: 11px;
+		height: 12px;
+		margin-right: 6px;
+		margin-top: 1px;
+		display: block;
+	}
+	
+	.editor .element.open h3:before {
+		content: url(../images/disclosureTriangleSmallDownBlack.png);
+	}
 	
 	.editor h3 {
 		background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)), color-stop(0.05, rgb(243, 243, 243)), color-stop(0.05, rgb(230, 230, 230)), to(rgb(209, 209, 209)));
@@ -198,6 +256,168 @@
 		font-family: Lucida Grande, sans-serif;
 		margin: 0 0 10px 0;
 	}
+	
+	.editor h3:hover {
+		background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)), color-stop(0.05, rgb(243, 243, 243)), color-stop(0.05, #dddddd), to(#c0c0c0));
+	}
+	
+	.editor .element {
+		height: 20px;
+	}
+	
+	.editor .element.open {
+		height: auto;
+	}
+	
+	.editor .addStyle {
+		float: right;
+		clear: both;
+		margin: 10px 15px 15px 0;
+		padding: 4px 6px 4px 25px;
+		font-family: sans-serif;
+		letter-spacing: normal;
+		font-size: 11px;
+		background: url(../images/icons/add_small.png) no-repeat 5px 3px;
+	}
+	
+/*******************************************************/		
+/*	Sidebar Footer
+/*******************************************************/
+
+	.editor footer {
+		position: fixed;
+		bottom: 0;
+	}
+	
+	.editor footer p {
+		margin: 0 auto 5%;
+		padding: 5%;
+		width: 85%;
+		background: #f3f3f3 url(../images/github.png) no-repeat 135% -20%;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		border: 1px solid #ccc;
+		color: #565656;
+		text-shadow: 0 1px 0 #ffffff;
+		line-height: 18px;
+	}
+	
+/*******************************************************/		
+/*	Overlay 	
+/*******************************************************/
+
+	.overlay  {	
+		background: rgba(0,0,0,0.5);
+		width: 100%;
+		height: 100%;
+		position: absolute; 
+	}
+	
+	.overlay .overlayInner {
+		width: 600px;
+		margin: 50px auto;
+		background: #fff;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		padding: 20px;
+		-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		position: relative;
+	}
+	
+	.overlay .overlayInner textarea {
+		width: 560px;
+		padding: 20px;
+		height: 350px;
+		border: 1px solid #ccc;
+	}
+	
+	.overlay .overlayInner .outputWrapper,
+	.overlay .overlayInner .xloadWrapper {
+		display: none;
+	}
+	
+	.overlay .overlayInner .loadWrapper h2 {
+		padding-left: 24px;
+		background: url(../images/icons/arrow_up2.png) no-repeat 0 2px;
+	}
+	
+	.overlay .overlayInner h2 {
+		font-size: 18px;
+		margin: 0 0 15px 0;
+		color: #444444;
+		font-weight: normal;
+	}
+	
+	.overlay .overlayClose {
+		padding: 18px 0 0 18px;
+		overflow: hidden;
+		height: 1px;
+		width: 1px;
+		background: url(../images/icons/close.png) no-repeat;
+		display: block;
+		opacity: 0.45;
+		position: absolute;
+		right: 20px;
+		-webkit-transition: all 200ms ease-in-out;
+		-moz-transition: all 200ms ease-in-out;
+		-o-transition: all 200ms ease-in-out;
+		-ms-transition: all 200ms ease-in-out;
+		transition: all 200ms ease-in-out;
+	}
+	
+	.overlay .overlayClose:hover {
+		opacity: 1;
+	}
+	
+	#loadStyle {
+		background: url(../images/icons/brush.png) no-repeat 6px 2px;
+		padding-left: 30px;
+	}
+	
+/*******************************************************/		
+/*	Editor 	
+/*******************************************************/
+
+	#elements-content2.elHov {
+		border: none;
+		outline: none;
+	}
+	
+	#elements-content2 .elHov {
+		outline: 1px solid #ccc;
+	}
+
+
+
+
+
+
+
+
+
+/*******************************************************/
+/*******************************************************/
+/* Old CSS
+/*******************************************************/
+/*******************************************************/	
+	
+/* These are fixes to make the markup look nice, nothing to do with the themes*/
+#elements-content2 {
+	width: 70%;
+	overflow: auto;
+	height: 100%;
+	margin: 0;
+	padding: 0;}
+	
+.webkit-html-js-node, .webkit-html-css-node {
+	white-space: pre-wrap;
+	left: -95px;
+	position: relative;
+}
 	
 	.element {
 		font-family: monospace, Courier;
@@ -233,49 +453,6 @@
 		margin:5px;
 	}
 
-.overlay {
-	position: absolute;
-	top: 0;
-	left; 0;
-	width: 100%;
-	height: 100%;
-	z-index: 97;
-	display:none;
-}
-	.overlayInner:after {
-		width: 498px;
-		height: 698px;
-		border: 1px solid #BDBDBD;
-		display: block;
-		content: ""; 
-		top:0;
-		left: 0;
-		position: absolute;
-		border-radius: 4px;
-		z-index: 98;
-	}
-
-
-	.overlayInner {
-		width: 500px;
-		height: 700px;
-		margin:20px;
-		background: #fff;
-		padding:20px;
-		border: 1px solid #fff;
-		box-shadow: 0 0 20px #BDBDBD;
-		margin-top: 20px;
-		border-radius: 4px;
-		position: relative;
-		background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(243, 243, 243)),  color-stop(0.05, rgb(230, 230, 230)), to(rgb(209, 209, 209)));
-		z-index: 100;b
-	}
-
-	.overlayInner textarea {
-		width: 400px;
-		height: 400px;
-	}
-
 .button {
 	display: inline-block;
 	padding: 4px 8px;
@@ -290,14 +467,6 @@
 	text-decoration: none;
 	margin: 5px;
 	font-weight: bold;
-}
-
-#styleInput {
-	width: 96%;
-	margin: 5px auto;
-	padding: 2px;
-	height: 20px;
-	display: block;
 }
 
 #output {
